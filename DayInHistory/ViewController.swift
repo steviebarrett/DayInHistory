@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var mainView: UITextView!
-    
+    @IBOutlet weak var tableView: UITableView!
+ 
     var events = [HistoryEvent]()
     
     override func viewDidLoad() {
@@ -19,7 +19,8 @@ class ViewController: UIViewController {
         
         //Call API
         let api = APIManager()
-        let eventTypes : [String] = ["event", "birth", "death"]
+//        let eventTypes : [String] = ["event", "birth", "death"]
+        let eventTypes : [String] = ["event"]
         
         for eType in eventTypes {
             api.loadData("http://history.muffinlabs.com/date", eventType:eType, completion: didLoadData)
@@ -28,14 +29,38 @@ class ViewController: UIViewController {
     
     func didLoadData(events: [HistoryEvent], eventType:String) {
         
-        mainView.text = "\n" + eventType + "s\n"
+        self.events = events
         
         print("\n" + eventType + "s\n")
         for item in events {
-            mainView.text.appendContentsOf(item.text + "\n")
             print("\(item.year) : \(item.text)\n")
         }
-    }        
+        
+        tableView.reloadData()
+    }
+    
+    //TableView methods
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return events.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        let event = events[indexPath.row]
+        
+        cell.textLabel?.text = (event.year)
+        cell.detailTextLabel?.text = event.text
+        
+        return cell
+    }
 }
 
 
