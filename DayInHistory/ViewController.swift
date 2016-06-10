@@ -17,6 +17,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.estimatedRowHeight = 88.0 // Whatever it is in Interface Builder
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         //Call API
         let api = APIManager()
 //        let eventTypes : [String] = ["event", "birth", "death"]
@@ -58,6 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.textLabel?.text = (event.year)
         cell.detailTextLabel?.text = event.text
+        cell.detailTextLabel?.sizeToFit()
         
         return cell
     }
