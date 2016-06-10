@@ -20,12 +20,19 @@ import Foundation
 
 class APIManager {
     
-    func loadData(urlString:String, completion: [HistoryEvent] -> Void) {
+    func loadData(urlString:String, eventType:String, completion: ([HistoryEvent], String) -> Void) {
         
         let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         
         let session = NSURLSession(configuration: config)
         let url = NSURL(string: urlString)!
+        
+        var dataPoint = "Events"
+        if eventType == "birth" {
+            dataPoint = "Births"
+        } else if eventType == "death" {
+            dataPoint = "Deaths"
+        }
         
         let task = session.dataTaskWithURL(url) {
             (data, response, error) -> Void in
@@ -43,7 +50,7 @@ class APIManager {
                     
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,
                         data = json["data"] as? JSONDictionary,
-                        events = data["Events"] as? JSONArray {
+                        events = data[dataPoint] as? JSONArray {
                         
                         var historyEvents = [HistoryEvent]()
                         for event in events {
@@ -58,7 +65,7 @@ class APIManager {
                         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
                         dispatch_async(dispatch_get_global_queue(priority, 0)) {
                             dispatch_async(dispatch_get_main_queue()) {
-                                completion(historyEvents)
+                                completion(historyEvents, eventType)
                             }
                         }
                     }

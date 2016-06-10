@@ -17,11 +17,16 @@ class ViewController: UIViewController {
         
         //Call API
         let api = APIManager()
-        api.loadData("http://history.muffinlabs.com/date", completion: didLoadData)
+        let eventTypes : [String] = ["event", "birth", "death"]
+        
+        for eType in eventTypes {
+            api.loadData("http://history.muffinlabs.com/date", eventType:eType, completion: didLoadData)
+        }
     }
     
-    func didLoadData(events: [HistoryEvent]) {
+    func didLoadData(events: [HistoryEvent], eventType:String) {
         
+        print(eventType + "\n\n")
         for item in events {
             print("\(item.year) : \(item.text)\n")
         }
