@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var mainView: UITextView!
+    
     var events = [HistoryEvent]()
     
     override func viewDidLoad() {
@@ -26,8 +28,11 @@ class ViewController: UIViewController {
     
     func didLoadData(events: [HistoryEvent], eventType:String) {
         
-        print(eventType + "\n\n")
+        mainView.text = "\n" + eventType + "s\n"
+        
+        print("\n" + eventType + "s\n")
         for item in events {
+            mainView.text.appendContentsOf(item.text + "\n")
             print("\(item.year) : \(item.text)\n")
         }
     }        
