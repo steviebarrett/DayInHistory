@@ -17,6 +17,8 @@
 		DCE6A2071D0ABC8E0073C9FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6A2061D0ABC8E0073C9FA /* Constants.swift */; };
 		DCE6A2091D0ABD030073C9FA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6A2081D0ABD030073C9FA /* APIManager.swift */; };
 		DCE6A20B1D0ABD4E0073C9FA /* HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6A20A1D0ABD4E0073C9FA /* HistoryEvent.swift */; };
+		DCE6A2181D10275E0073C9FA /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6A2171D10275E0073C9FA /* EventTableViewCell.swift */; };
+		DCE6A21A1D1029520073C9FA /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6A2191D1029520073C9FA /* EventTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		DCE6A2061D0ABC8E0073C9FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCE6A2081D0ABD030073C9FA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		DCE6A20A1D0ABD4E0073C9FA /* HistoryEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryEvent.swift; sourceTree = "<group>"; };
+		DCE6A2171D10275E0073C9FA /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		DCE6A2191D1029520073C9FA /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +155,9 @@
 		DCE6A2031D0ABC3E0073C9FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DCE6A2171D10275E0073C9FA /* EventTableViewCell.swift */,
 				DCE6A1D51D0ABC190073C9FA /* ViewController.swift */,
+				DCE6A2191D1029520073C9FA /* EventTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -308,9 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCE6A2181D10275E0073C9FA /* EventTableViewCell.swift in Sources */,
 				DCE6A20B1D0ABD4E0073C9FA /* HistoryEvent.swift in Sources */,
 				DCE6A2091D0ABD030073C9FA /* APIManager.swift in Sources */,
 				DCE6A1D61D0ABC190073C9FA /* ViewController.swift in Sources */,
+				DCE6A21A1D1029520073C9FA /* EventTableViewController.swift in Sources */,
 				DCE6A1D41D0ABC190073C9FA /* AppDelegate.swift in Sources */,
 				DCE6A2071D0ABC8E0073C9FA /* Constants.swift in Sources */,
 			);
@@ -539,6 +547,7 @@
 				DCE6A1FA1D0ABC190073C9FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DCE6A1FB1D0ABC190073C9FA /* Build configuration list for PBXNativeTarget "DayInHistoryTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +556,7 @@
 				DCE6A1FD1D0ABC190073C9FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DCE6A1FE1D0ABC190073C9FA /* Build configuration list for PBXNativeTarget "DayInHistoryUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +565,7 @@
 				DCE6A2001D0ABC190073C9FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
