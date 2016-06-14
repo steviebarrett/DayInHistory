@@ -51,13 +51,9 @@ class EventTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
-        let event = events[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! EventTableViewCell
         
-        cell.textLabel?.text = (event.year)
-        cell.detailTextLabel?.text = event.text
-        cell.detailTextLabel?.sizeToFit()
+        cell.event = events[indexPath.row]
 
         return cell
     }
